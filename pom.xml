@@ -17,17 +17,30 @@
 	</organization>
 
 	<properties>
-		<jdk.version>1.8</jdk.version>
-		<spring.version>5.1.2.RELEASE</spring.version>
+		
+  <spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://13.233.216.196:9980/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin</sonar.password> 
+		
+<maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+	<sonar.host.url>http://65.2.183.23:9000</sonar.host.url>
+	<sonar.login>squ_b780f7e019fd2ee25c3bc895151289dd21661d5d</sonar.login>
+		<!--<sonar.login>admin</sonar.login>
+		<sonar.password>henry</sonar.password>  -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 	</properties>
+	
+	<repositories>
+	<repository>
+	<id>nexus</id>
+	<name>remote repo</name>
+	<url>http://65.2.183.23:8089/bmr/repository/remote-repo/</url>
+	
+	</repository>
+	
+	</repositories>
 
 	<dependencies>
 		
@@ -36,6 +49,11 @@
 			<artifactId>json</artifactId>
 			<version>20160212</version>
 		</dependency>
+		<dependency>
+  <groupId>com.remote</groupId>
+  <artifactId>standalone</artifactId>
+  <version>1.0.0</version>
+</dependency> 
 		
 		<!-- test dependencies -->
 		<dependency>
@@ -97,14 +115,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://54.255.174.111:8081/repository/flipkart-release/</url>
+	      <name>Releases Nexus Repository</name>
+	      <url>http://65.2.183.23:8089/bmr/repository/facebook/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://54.255.174.111:8081/repository/flipkart-snapshot/</url>
+	      <name>Snapshot Nexus Repository </name>
+	      <url>http://65.2.183.23:8089/bmr/repository/facebook-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
@@ -113,15 +131,8 @@
 		<finalName>maven-web-application</finalName>
 		
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
+				        
+			
 
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -146,6 +157,8 @@
 					<wtpContextName>maven-web-application</wtpContextName>
 				</configuration>
 			</plugin>
+			
+			
 			
 </plugins>
 	</build>
